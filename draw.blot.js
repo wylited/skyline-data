@@ -22,8 +22,7 @@ const baseLine = [
 ]
 
 // DATA INITIALIZATION (52 weeks, 7 days), example for OP (2024)
-
-const data = [[1, 1, 1], [2, 1], [1], [1], [5], [9, 6], [1], [3, 1, 1], [1], [2, 1, 1], [2, 2], [1], [5, 1], [8, 2, 1], [4, 3, 2, 1, 1], [13, 8, 8, 4], [12, 3, 2, 1, 1, 1], [3, 2, 1], [6, 1], [], [2, 1, 1], [6, 1], [2], [5, 4, 1, 1], [5, 3, 2], [1, 1], [6, 3, 2], [], [1], [5, 4, 3, 2, 1, 1], [2, 2], [2, 1, 1, 1, 1], [2, 2, 1], [6, 3, 2], [1], [1], [3, 2, 1], [5, 3], [2, 1], [1, 1], [4, 1, 1], [2, 2], [3, 2], [16, 1], [4, 3, 1], [7, 5, 4, 2, 2, 1], [43, 5, 4, 1], [16, 7, 5, 3, 3, 3, 2], [10, 5, 4, 3, 2, 1], [3, 2, 2, 1], [11, 2, 1], []]
+const data = [[1, -5, 1], [2, 1], [1], [1], [5], [9, 6], [1], [3, 1, 1], [1], [2, 1, 1], [2, 2], [1], [5, 1], [8, 2, 1], [4, 3, 2, 1, 1], [13, 8, 8, 4], [12, 3, 2, 1, 1, 1], [3, 2, 1], [6, 1], [], [2, 1, 1], [6, 1], [2], [5, 4, 1, 1], [5, 3, 2], [1, 1], [6, 3, 2], [], [1], [5, 4, 3, 2, 1, 1], [2, 2], [2, 1, 1, 1, 1], [2, 2, 1], [6, 3, 2], [1], [1], [3, 2, 1], [5, 3], [2, 1], [1, 1], [4, 1, 1], [2, 2], [3, 2], [16, 1], [4, 3, 1], [7, 5, 4, 2, 2, 1], [43, 5, 4, 1], [16, 7, 5, 3, 3, 3, 2], [10, 5, 4, 3, 2, 1], [3, 2, 2, 1], [11, 2, 1], []]
 
 function getActivityLevel(week) { // Should normalize better somehow
     if (week.length === 0) return 0;
@@ -51,6 +50,9 @@ function generateTower(startX, endX, height, activityLevel) {
 
         case 2: // Medium activity - stepped tower
             return [
+                [endX, baseHeight],
+                [endX, height],
+                [startX, height],
                 [startX, baseHeight],
                 [startX + (widthTile * 0.3), baseHeight],
                 [startX + (widthTile * 0.3), baseHeight + segmentHeight],
@@ -65,6 +67,9 @@ function generateTower(startX, endX, height, activityLevel) {
 
         case 3: // High activity - complex tower
             return [
+                [endX, baseHeight],
+                [endX, height],
+                [startX, height],
                 [startX, baseHeight],
                 [startX + (widthTile * 0.4), baseHeight],
                 [startX + (widthTile * 0.2), baseHeight + segmentHeight],
